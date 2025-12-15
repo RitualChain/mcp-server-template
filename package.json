@@ -1,0 +1,44 @@
+{
+  "name": "mcp-server-template",
+  "version": "0.1.0",
+  "description": "A template for building MCP servers with Next.js",
+  "author": "Ritual Chain",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RitualChain/mcp-server-template.git"
+  },
+  "homepage": "https://github.com/RitualChain/mcp-server-template",
+  "bugs": {
+    "url": "https://github.com/RitualChain/mcp-server-template/issues"
+  },
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.24.3",
+    "@radix-ui/react-accordion": "^1.2.12",
+    "class-variance-authority": "0.7.1",
+    "clsx": "2.1.1",
+    "lucide-react": "0.552.0",
+    "mcp-handler": "^1.0.4",
+    "next": "^16.0.10",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "tailwind-merge": "3.4.0",
+    "tailwindcss-animate": "1.0.7",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.18",
+    "@types/node": "^22.19.3",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "19.2.2",
+    "postcss": "8.5.6",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3"
+  }
+}
