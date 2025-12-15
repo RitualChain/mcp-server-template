@@ -95,7 +95,7 @@ bun install
 bun dev
 ```
 
-Visit [http://localhost:3000](http://localhost:3000) to see the landing page.
+Visit [http://localhost:3030](http://localhost:3030) to see the landing page.
 
 ### 3. Deploy to Vercel
 
@@ -291,6 +291,28 @@ return {
 | `echo`            | Echoes back a message (useful for testing connectivity) |
 | `get_server_time` | Returns current server time and timezone                |
 
+### Endpoint Discovery
+
+Visiting `/mcp` in a browser (GET request) returns server info as JSON:
+
+```json
+{
+  "name": "MCP Server Template",
+  "version": "0.1.0",
+  "protocol": "Model Context Protocol (MCP)",
+  "transport": "Streamable HTTP",
+  "status": "running",
+  "tools": [...],
+  "usage": {
+    "note": "This endpoint uses POST for MCP communication",
+    "test": "npx tsx scripts/test-streamable-http-client.ts <origin>",
+    "docs": "https://modelcontextprotocol.io"
+  }
+}
+```
+
+MCP clients communicate via **POST** requests to this endpoint.
+
 ---
 
 ## Connecting MCP Clients
@@ -358,7 +380,7 @@ npx tsx scripts/test-streamable-http-client.ts https://your-app.vercel.app --ver
 bun dev
 
 # Terminal 2: Test the MCP endpoint
-npx tsx scripts/test-streamable-http-client.ts http://localhost:3000
+npx tsx scripts/test-streamable-http-client.ts http://localhost:3030
 ```
 
 ---

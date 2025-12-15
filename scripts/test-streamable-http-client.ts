@@ -10,7 +10,7 @@ if (!origin) {
     "Usage: npx tsx scripts/test-streamable-http-client.ts <origin> [--verbose|-v]"
   );
   console.error(
-    "Example: npx tsx scripts/test-streamable-http-client.ts http://localhost:3000 -v"
+    "Example: npx tsx scripts/test-streamable-http-client.ts http://localhost:3030 -v"
   );
   process.exit(1);
 }

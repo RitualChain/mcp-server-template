@@ -15,7 +15,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "next dev",
+    "dev": "PORT=3030 next dev",
     "start": "next start"
   },
   "dependencies": {
