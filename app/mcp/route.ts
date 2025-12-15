@@ -1,5 +1,5 @@
-import { createMcpHandler } from "mcp-handler"
-import { z } from "zod"
+import { createMcpHandler } from "mcp-handler";
+import { z } from "zod";
 
 // StreamableHttp server
 const handler = createMcpHandler(
@@ -12,33 +12,34 @@ const handler = createMcpHandler(
       },
       async ({ message }) => ({
         content: [{ type: "text", text: `Tool echo: ${message}` }],
-      }),
-    )
+      })
+    );
 
-    server.tool("get_server_time", "Returns the current server time and timezone information", {}, async () => ({
-      content: [
-        {
-          type: "text",
-          text: JSON.stringify(
-            {
-              serverTime: new Date().toISOString(),
-              timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-              timestamp: Date.now(),
-            },
-            null,
-            2,
-          ),
-        },
-      ],
-    }))
+    server.tool(
+      "get_server_time",
+      "Returns the current server time and timezone information",
+      {},
+      async () => ({
+        content: [
+          {
+            type: "text",
+            text: JSON.stringify(
+              {
+                serverTime: new Date().toISOString(),
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                timestamp: Date.now(),
+              },
+              null,
+              2
+            ),
+          },
+        ],
+      })
+    );
   },
   {
     capabilities: {
-      tools: {
-        echo: {
-          description: "Echo a message",
-        },
-      },
+      tools: {},
     },
   },
   {
@@ -46,7 +47,7 @@ const handler = createMcpHandler(
     verboseLogs: true,
     maxDuration: 60,
     disableSse: true,
-  },
-)
+  }
+);
 
-export { handler as GET, handler as POST, handler as DELETE }
+export { handler as GET, handler as POST, handler as DELETE };
