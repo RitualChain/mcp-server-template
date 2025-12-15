@@ -70,7 +70,7 @@ mcp-server-template/
 │   ├── theme-provider.tsx   # Dark/light theme support
 │   └── ui/                  # Reusable UI components (shadcn/ui)
 ├── scripts/
-│   └── test-streamable-http-client.mjs  # Test client for local development
+│   └── test-streamable-http-client.ts   # Test client for local development
 ├── public/
 │   └── images/              # Setup guide screenshots
 ├── package.json
@@ -136,6 +136,7 @@ Here's the complete `app/mcp/route.ts` structure:
 import { createMcpHandler } from "mcp-handler";
 import { z } from "zod";
 
+// StreamableHttp server
 const handler = createMcpHandler(
   // 1. Tool Registration Function
   async (server) => {
@@ -172,13 +173,13 @@ const handler = createMcpHandler(
       })
     );
   },
-  // 2. Capabilities
+  // 2. Capabilities — declare server supports tools
   {
     capabilities: {
       tools: {},
     },
   },
-  // 3. Options
+  // 3. Options — runtime configuration
   {
     basePath: "",
     verboseLogs: true,
@@ -339,19 +340,25 @@ Add to your Claude config file:
 ### Using the Test Client
 
 ```bash
-node scripts/test-streamable-http-client.mjs https://your-app.vercel.app
+npx tsx scripts/test-streamable-http-client.ts https://your-app.vercel.app
 ```
 
 This will connect to your MCP server and list available tools.
+
+Add `--verbose` or `-v` for detailed output including tool schemas:
+
+```bash
+npx tsx scripts/test-streamable-http-client.ts https://your-app.vercel.app --verbose
+```
 
 ### Local Development
 
 ```bash
 # Terminal 1: Start the dev server
-bun run dev
+bun dev
 
 # Terminal 2: Test the MCP endpoint
-node scripts/test-streamable-http-client.mjs http://localhost:3000
+npx tsx scripts/test-streamable-http-client.ts http://localhost:3000
 ```
 
 ---
